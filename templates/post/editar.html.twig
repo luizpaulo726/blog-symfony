@@ -1,0 +1,17 @@
+{% extends '_layout.html.twig' %}
+
+{% block title %}Editar: {{ post.titulo }}{% endblock %}
+
+{% block conteudo %}
+<div class="cabecalho-pagina">
+    <div>
+        <h1>Editar post</h1>
+        <p class="texto-suave">#{{ post.id }} · criado em {{ post.criadoEm|date('d/m/Y H:i') }}</p>
+    </div>
+    {{ include('post/_form_excluir.html.twig') }}
+</div>
+
+<div class="painel">
+    {{ include('post/_formulario.html.twig', {rotulo_botao: 'Salvar alterações'}) }}
+</div>
+{% endblock %}

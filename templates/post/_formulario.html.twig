@@ -1,0 +1,45 @@
+{{ form_start(form, {attr: {class: 'formulario', novalidate: 'novalidate'}}) }}
+    {{ form_errors(form) }}
+
+    <div class="campo-grupo">
+        {{ form_label(form.titulo) }}
+        {{ form_widget(form.titulo, {attr: {class: 'campo'}}) }}
+        <div class="erro">{{ form_errors(form.titulo) }}</div>
+    </div>
+
+    <div class="campo-grupo">
+        {{ form_label(form.resumo) }}
+        {{ form_widget(form.resumo, {attr: {class: 'campo'}}) }}
+        <div class="erro">{{ form_errors(form.resumo) }}</div>
+    </div>
+
+    <div class="linha-dupla">
+        <div class="campo-grupo">
+            {{ form_label(form.categoria) }}
+            {{ form_widget(form.categoria, {attr: {class: 'campo'}}) }}
+            <div class="erro">{{ form_errors(form.categoria) }}</div>
+        </div>
+
+        <div class="campo-grupo">
+            {{ form_label(form.autor) }}
+            {{ form_widget(form.autor, {attr: {class: 'campo'}}) }}
+            <div class="erro">{{ form_errors(form.autor) }}</div>
+        </div>
+    </div>
+
+    <div class="campo-grupo">
+        {{ form_label(form.conteudo) }}
+        {{ form_widget(form.conteudo, {attr: {class: 'campo'}}) }}
+        <div class="erro">{{ form_errors(form.conteudo) }}</div>
+    </div>
+
+    <div class="campo-grupo campo-grupo--checkbox">
+        {{ form_widget(form.publicado) }}
+        {{ form_label(form.publicado) }}
+    </div>
+
+    <div class="formulario__acoes">
+        <a href="{{ path('post_listar') }}" class="botao botao--fantasma">Cancelar</a>
+        <button type="submit" class="botao botao--primario">{{ rotulo_botao|default('Salvar') }}</button>
+    </div>
+{{ form_end(form) }}

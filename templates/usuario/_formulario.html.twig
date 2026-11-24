@@ -1,0 +1,22 @@
+{{ form_start(form, {attr: {class: 'formulario', novalidate: 'novalidate'}}) }}
+    {{ form_errors(form) }}
+
+    <div class="linha-dupla">
+        <div class="campo-grupo">
+            {{ form_label(form.nome, 'Nome') }}
+            {{ form_widget(form.nome, {attr: {class: 'campo', placeholder: 'Nome completo'}}) }}
+            <div class="erro">{{ form_errors(form.nome) }}</div>
+        </div>
+
+        <div class="campo-grupo">
+            {{ form_label(form.email, 'E-mail') }}
+            {{ form_widget(form.email, {attr: {class: 'campo', placeholder: 'nome@exemplo.com'}}) }}
+            <div class="erro">{{ form_errors(form.email) }}</div>
+        </div>
+    </div>
+
+    <div class="formulario__acoes">
+        <a href="{{ path('usuario_index') }}" class="botao botao--fantasma">Cancelar</a>
+        <button type="submit" class="botao botao--primario">{{ rotulo_botao|default('Salvar') }}</button>
+    </div>
+{{ form_end(form) }}

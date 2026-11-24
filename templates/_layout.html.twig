@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sistema{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/sistema.css') }}">
+{% endblock %}
+
+{% block body %}
+{% set rota = app.request.attributes.get('_route') %}
+<div class="posts-app">
+    <header class="topo">
+        <div class="container topo__conteudo">
+            <a href="{{ path('post_listar') }}" class="marca">📝 Meu Sistema</a>
+            <nav class="menu">
+                <a href="{{ path('post_listar') }}" class="{{ rota starts with 'post_' ? 'ativo' }}">Posts</a>
+                <a href="{{ path('usuario_index') }}" class="{{ rota starts with 'usuario_' ? 'ativo' }}">Usuários</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% for tipo, mensagens in app.flashes %}
+            {% for mensagem in mensagens %}
+                <div class="alerta alerta--{{ tipo }}">{{ mensagem }}</div>
+            {% endfor %}
+        {% endfor %}
+
+        {% block conteudo %}{% endblock %}
+    </main>
+
+    <footer class="rodape">
+        <div class="container">Sistema de cadastro · Symfony + Twig</div>
+    </footer>
+</div>
+{% endblock %}

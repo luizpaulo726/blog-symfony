@@ -1,0 +1,18 @@
+{% extends '_layout.html.twig' %}
+
+{% block title %}Editar: {{ usuario.nome }}{% endblock %}
+
+{% block conteudo %}
+<a href="{{ path('usuario_index') }}" class="link-voltar">← Voltar para a lista</a>
+
+<div class="cabecalho-pagina">
+    <div>
+        <h1>Editar usuário</h1>
+        <p class="texto-suave">#{{ usuario.id }} · {{ usuario.nome }}</p>
+    </div>
+</div>
+
+<div class="painel painel--estreito">
+    {{ include('usuario/_formulario.html.twig', {rotulo_botao: 'Atualizar'}) }}
+</div>
+{% endblock %}

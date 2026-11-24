@@ -1,0 +1,15 @@
+{% extends '_layout.html.twig' %}
+
+{% block title %}Novo usuário{% endblock %}
+
+{% block conteudo %}
+<a href="{{ path('usuario_index') }}" class="link-voltar">← Voltar para a lista</a>
+
+<div class="cabecalho-pagina">
+    <h1>Cadastrar usuário</h1>
+</div>
+
+<div class="painel painel--estreito">
+    {{ include('usuario/_formulario.html.twig', {rotulo_botao: 'Salvar usuário'}) }}
+</div>
+{% endblock %}

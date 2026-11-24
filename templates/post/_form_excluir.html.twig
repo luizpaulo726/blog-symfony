@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('post_excluir', {id: post.id}) }}" class="form-inline"
+      onsubmit="return confirm('Tem certeza que deseja excluir o post &quot;{{ post.titulo|e('html_attr') }}&quot;?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('excluir-post-' ~ post.id) }}">
+    <button type="submit" class="botao botao--perigo {{ pequeno|default(false) ? 'botao--pequeno' }}">Excluir</button>
+</form>

@@ -1,0 +1,51 @@
+{% extends '_layout.html.twig' %}
+
+{% block title %}Usuários{% endblock %}
+
+{% block conteudo %}
+<div class="cabecalho-pagina">
+    <div>
+        <h1>Usuários</h1>
+        <p class="texto-suave">{{ usuarios|length }} usuário(s) cadastrado(s)</p>
+    </div>
+    <a href="{{ path('usuario_new') }}" class="botao botao--primario">+ Novo usuário</a>
+</div>
+
+{% if usuarios is empty %}
+    <div class="vazio">
+        <p class="vazio__icone">👤</p>
+        <p>Nenhum usuário cadastrado ainda.</p>
+        <a href="{{ path('usuario_new') }}" class="botao botao--primario">Cadastrar o primeiro usuário</a>
+    </div>
+{% else %}
+    <div class="tabela-wrapper">
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th class="tabela__acoes">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                    <tr>
+                        <td class="texto-suave">{{ usuario.id }}</td>
+                        <td>
+                            <div class="usuario-nome">
+                                <span class="avatar">{{ usuario.nome|first|upper }}</span>
+                                {{ usuario.nome }}
+                            </div>
+                        </td>
+                        <td>{{ usuario.email ?: '—' }}</td>
+                        <td class="tabela__acoes">
+                            <a href="{{ path('usuario_edit', {id: usuario.id}) }}" class="botao botao--pequeno">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+{% endblock %}

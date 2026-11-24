@@ -1,0 +1,39 @@
+{% extends '_layout.html.twig' %}
+
+{% block title %}{{ post.titulo }}{% endblock %}
+
+{% block conteudo %}
+<a href="{{ path('post_listar') }}" class="link-voltar">← Voltar para a lista</a>
+
+<article class="painel post">
+    <div class="cartao__topo">
+        <span class="selo {{ post.publicado ? 'selo--publicado' : 'selo--rascunho' }}">
+            {{ post.publicado ? 'Publicado' : 'Rascunho' }}
+        </span>
+        {% if post.categoria %}
+            <span class="categoria">{{ post.categoria }}</span>
+        {% endif %}
+    </div>
+
+    <h1 class="post__titulo">{{ post.titulo }}</h1>
+
+    {% if post.resumo %}
+        <p class="post__resumo">{{ post.resumo }}</p>
+    {% endif %}
+
+    <p class="texto-suave post__meta">
+        Por <strong>{{ post.autor ? post.autor.nome : 'Sem autor' }}</strong>
+        · criado em {{ post.criadoEm|date('d/m/Y \\à\\s H:i') }}
+        {% if post.atualizadoEm %}
+            · atualizado em {{ post.atualizadoEm|date('d/m/Y \\à\\s H:i') }}
+        {% endif %}
+    </p>
+
+    <div class="post__conteudo">{{ post.conteudo|nl2br }}</div>
+
+    <div class="post__acoes">
+        <a href="{{ path('post_editar', {id: post.id}) }}" class="botao botao--primario">Editar</a>
+        {{ include('post/_form_excluir.html.twig') }}
+    </div>
+</article>
+{% endblock %}
